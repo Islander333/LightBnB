@@ -12,9 +12,6 @@ const bcrypt = require('bcrypt');
 pool.query(`SELECT title FROM properties LIMIT 10;`)
 
 
-const properties = require("./json/properties.json");
-const users = require("./json/users.json");
-
 /// Users
 
 /**
@@ -137,18 +134,18 @@ const getAllProperties = function (options, limit = 10) {
   
   if (options.city) {
     queryParams.push(`%${options.city}%`);
-    queryStr += ` AND city LIKE $${queryParams.length}`;
+    queryString += ` AND city LIKE $${queryParams.length}`;
   }
 
   //3.5 (more conditions)
   if (options.owner_id) {
     queryParams.push(options.owner_id);
-    queryStr += ` AND owner_id = $${queryParams.length}`;
+    queryString += ` AND owner_id = $${queryParams.length}`;
   }
 
   if (options.minimum_price_per_night && options.maximum_price_per_night) {
     queryParams.push(options.minimum_price_per_night * 100, options.maximum_price_per_night * 100);
-    queryStr += ` AND cost_per_night BETWEEN $${queryParams.length - 1} AND $${queryParams.length}`;
+    queryString += ` AND cost_per_night BETWEEN $${queryParams.length - 1} AND $${queryParams.length}`;
   }
 
 
