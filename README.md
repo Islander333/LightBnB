@@ -20,5 +20,5 @@ A Simple multi-page Airbnb clone that uses server-side Javascript to display the
 * Navigate to the LightBnB_WebApp directory
 * Start Database with `startpostgres`
 * Run the development server using `npm run local`
-* Open your browser, the app will be served at ![](localhost:3000)
+* Open your browser, the app will be served at: localhost:3000
 
